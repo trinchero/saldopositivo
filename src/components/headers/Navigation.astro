@@ -318,12 +318,17 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 <script>
 	import { gsap } from "gsap";
 	import { ScrollTrigger } from "gsap/ScrollTrigger";
-	import { SplitText } from "gsap/SplitText";
-	import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+	// Uncomment if you have premium version of gsap
+	// import { SplitText } from "gsap/SplitText";
+	// import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
 	import { BlurPlugin } from "@/utils/gsap-blur";
 	import { LifecycleManager } from "@/utils/lifecycle-manager";
 
-	gsap.registerPlugin(ScrollTrigger, SplitText, DrawSVGPlugin, BlurPlugin);
+	gsap.registerPlugin(
+		ScrollTrigger,
+		/*SplitText, DrawSVGPlugin,*/
+		BlurPlugin,
+	);
 
 	const lm = new LifecycleManager();
 
@@ -341,7 +346,8 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 				},
 			})
 				.to("[data-company-name]", { opacity: 0 })
-				.to("header .logo-path-mask", { drawSVG: 0 }, "<")
+				// .to("header .logo-path-mask", { drawSVG: 0 }, "<")
+				.to("header .logo-path-mask", { opacity: 0 }, "<")
 				.set("#header-logo", { pointerEvents: "none" });
 
 			const tl = gsap.timeline({
@@ -352,28 +358,32 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 				},
 			});
 
-			const childSplit = new SplitText("[data-nav-text-reveal]", {
-				type: "lines",
-				linesClass: "split-child",
-			});
-			const parentSplit = new SplitText("[data-nav-text-reveal]", {
-				// type: "lines",
-				linesClass: "split-parent",
-			});
+			// const childSplit = new SplitText("[data-nav-text-reveal]", {
+			// 	type: "lines",
+			// 	linesClass: "split-child",
+			// });
+			// const parentSplit = new SplitText("[data-nav-text-reveal]", {
+			// 	// type: "lines",
+			// 	linesClass: "split-parent",
+			// });
 
 			tl.set("#navigation", { pointerEvents: "auto" })
-				.set("[data-nav-text-reveal]", { opacity: 1 })
 				.to("#navigation-background", { opacity: 1 }, "<")
-				.from(
-					childSplit.lines,
-					{
-						duration: 1,
-						yPercent: 300,
-						skewY: 7,
-						stagger: 0.02,
-					},
-					"<",
+				.to(
+					"[data-nav-text-reveal]",
+					{ opacity: 1, duration: 0.5, ease: "none" },
+					"<=0.5",
 				);
+			// .from(
+			// 	childSplit.lines,
+			// 	{
+			// 		duration: 1,
+			// 		yPercent: 300,
+			// 		skewY: 7,
+			// 		stagger: 0.02,
+			// 	},
+			// 	"<",
+			// );
 
 			const menuItems = gsap.utils.toArray(
 				"[data-nav-item]",

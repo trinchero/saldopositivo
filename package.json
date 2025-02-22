@@ -31,7 +31,7 @@
 		"@keystatic/core": "^0.5.17",
 		"alpinejs": "^3.14.0",
 		"astro": "4.7.0",
-		"gsap": "npm:@gsap/business@^3.12.5",
+		"gsap": "^3.12.5",
 		"keystatic-components": "^0.0.2",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1"
@@ -62,7 +62,7 @@
 		"workbox-window": "^7.1.0"
 	},
 	"overrides": {
-		"gsap": "npm:@gsap/business@^3.12.5",
+		"gsap": "^3.12.5",
 		"sharp": "0.33.4"
 	}
 }
