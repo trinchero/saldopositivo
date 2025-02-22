@@ -25,18 +25,15 @@ export default config({
 	storage: {
 		kind: "local",
 	},
-	cloud: {
-		project: "majestico/pollux",
-	},
 	ui: {
 		brand: {
-			name: "Majestico",
+			name: "Your Company",
 			mark: BrandMarkComponent,
 		},
 	},
 	singletons: {
 		header: singleton({
-			label: "Navigazione",
+			label: "Navigation",
 			path: "src/content/global/header",
 			format: { data: "json" },
 			schema: {
@@ -49,51 +46,51 @@ export default config({
 							isRequired: false,
 						},
 					}),
-					title: fields.text({ label: "Titolo" }),
+					title: fields.text({ label: "Title" }),
 				}),
 				pages: fields.array(
 					fields.object({
-						title: fields.text({ label: "Titolo" }),
+						title: fields.text({ label: "Title" }),
 						link: fields.text({ label: "Url" }),
 					}),
 					// Labelling options
 					{
-						label: "Pagine",
+						label: "Pages",
 						itemLabel: (props) => props.fields.title.value,
 					},
 				),
 				actions: fields.array(
 					fields.object({
-						title: fields.text({ label: "Titolo" }),
+						title: fields.text({ label: "Title" }),
 						link: fields.text({ label: "Url" }),
 						style: fields.select({
-							label: "Stile",
+							label: "Style",
 							options: [
-								{ label: "Pieno", value: "button" },
-								{ label: "Delineato", value: "outline" },
+								{ label: "Filled", value: "button" },
+								{ label: "Outlined", value: "outline" },
 							],
 							defaultValue: "button",
 						}),
 					}),
 					// Labelling options
 					{
-						label: "Azioni",
+						label: "Actions",
 						itemLabel: (props) => props.fields.title.value,
 					},
 				),
 				contacts: fields.object(
 					{
-						phone: fields.text({ label: "Telefono" }),
-						mail: fields.text({ label: "Mail" }),
-						address: fields.text({ label: "Indirizzo" }),
+						phone: fields.text({ label: "Phone" }),
+						mail: fields.text({ label: "Email" }),
+						address: fields.text({ label: "Address" }),
 					},
 					{
-						label: "Contatti",
+						label: "Contacts",
 					},
 				),
 				socials: fields.array(
 					fields.object({
-						icon: fields.text({ label: "Icona" }),
+						icon: fields.text({ label: "Icon" }),
 						link: fields.text({ label: "Url" }),
 					}),
 					{
@@ -122,16 +119,16 @@ export default config({
 			path: "src/content/global/footer",
 			format: { data: "json" },
 			schema: {
-				title: fields.text({ label: "Titolo" }),
-				subtitle: fields.text({ label: "Sottotitolo" }),
+				title: fields.text({ label: "Title" }),
+				subtitle: fields.text({ label: "Subtitle" }),
 				copyright: fields.text({ label: "Copyright" }),
 				contacts: fields.object(
 					{
-						phone: fields.text({ label: "Telefono" }),
-						mail: fields.text({ label: "Mail" }),
+						phone: fields.text({ label: "Phone" }),
+						mail: fields.text({ label: "Email" }),
 						socials: fields.array(
 							fields.object({
-								title: fields.text({ label: "Titolo" }),
+								title: fields.text({ label: "Title" }),
 								link: fields.text({ label: "Url" }),
 								icon: fields.text({ label: "Icon" }),
 							}),
@@ -142,7 +139,7 @@ export default config({
 						),
 					},
 					{
-						label: "Contatti",
+						label: "Contacts",
 					},
 				),
 			},
@@ -150,7 +147,7 @@ export default config({
 	},
 	collections: {
 		pages: collection({
-			label: "Pagine",
+			label: "Pages",
 			slugField: "title",
 			path: "src/content/pages/it/*",
 			entryLayout: "content",
@@ -160,7 +157,7 @@ export default config({
 			schema: {
 				title: fields.slug({
 					name: {
-						label: "Titolo",
+						label: "Title",
 						description: "Titolo della pagina",
 						validation: {
 							isRequired: true,
@@ -174,11 +171,11 @@ export default config({
 					},
 				}),
 				subtitle: fields.text({
-					label: "Sottotitolo",
+					label: "Subtitle",
 					multiline: true,
 				}),
 				cover: fields.image({
-					label: "Immagine di copertina",
+					label: "Cover Image",
 					directory: "src/assets/pages",
 					publicPath: "@/assets/pages/",
 				}),
@@ -209,7 +206,7 @@ export default config({
 					defaultValue: "informational",
 				}),
 				lastUpdateDate: fields.date({
-					label: "Data ultimo aggiornamento",
+					label: "Last Update Date",
 					description: "Data dell'ultimo aggiornamento della pagina",
 					defaultValue: {
 						kind: "today",
@@ -248,7 +245,7 @@ export default config({
 							},
 						}),
 						author: fields.relationship({
-							label: "Autore",
+							label: "Author",
 							description: "Autore della pagina",
 							collection: "authors",
 							validation: {
@@ -377,26 +374,26 @@ export default config({
 							icon: HeroIcon({ ariaHidden: true }),
 							schema: {
 								title: fields.text({
-									label: "Titolo",
+									label: "Title",
 									validation: {
 										isRequired: true,
 									},
 								}),
 								subtitle: fields.text({
-									label: "Sottotitolo",
+									label: "Subtitle",
 									validation: {
 										isRequired: true,
 									},
 								}),
 								buttons: fields.array(
 									fields.object({
-										title: fields.text({ label: "Titolo" }),
+										title: fields.text({ label: "Title" }),
 										href: fields.text({ label: "Url" }),
 										style: fields.select({
-											label: "Stile",
+											label: "Style",
 											options: [
-												{ label: "Pieno", value: "button" },
-												{ label: "Delineato", value: "outline" },
+												{ label: "Filled", value: "button" },
+												{ label: "Outlined", value: "outline" },
 											],
 											defaultValue: "button",
 										}),
@@ -404,7 +401,7 @@ export default config({
 									}),
 									// Labelling options
 									{
-										label: "Azioni",
+										label: "Actions",
 										itemLabel: (props) => props.fields.title.value,
 									},
 								),
@@ -416,7 +413,7 @@ export default config({
 							icon: GeneralIcon({ ariaHidden: true }),
 							schema: {
 								title: fields.text({
-									label: "Titolo",
+									label: "Title",
 									validation: {
 										isRequired: true,
 									},
@@ -439,15 +436,15 @@ export default config({
 							icon: GeneralIcon({ ariaHidden: true }),
 							schema: {
 								title: fields.text({
-									label: "Titolo",
+									label: "Title",
 									validation: {
 										isRequired: true,
 									},
 								}),
 								services: fields.array(
 									fields.object({
-										title: fields.text({ label: "Titolo" }),
-										description: fields.text({ label: "Descrizione", multiline: true }),
+										title: fields.text({ label: "Title" }),
+										description: fields.text({ label: "Description", multiline: true }),
 										icon: fields.image({
 											label: "Icona",
 											directory: "src/assets/pages",
@@ -474,20 +471,20 @@ export default config({
 							icon: GeneralIcon({ ariaHidden: true }),
 							schema: {
 								title: fields.text({
-									label: "Titolo",
+									label: "Title",
 									validation: {
 										isRequired: true,
 									},
 								}),
 								buttons: fields.array(
 									fields.object({
-										title: fields.text({ label: "Titolo" }),
+										title: fields.text({ label: "Title" }),
 										href: fields.text({ label: "Url" }),
 										style: fields.select({
-											label: "Stile",
+											label: "Style",
 											options: [
-												{ label: "Pieno", value: "button" },
-												{ label: "Delineato", value: "outline" },
+												{ label: "Filled", value: "button" },
+												{ label: "Outlined", value: "outline" },
 											],
 											defaultValue: "button",
 										}),
@@ -495,7 +492,7 @@ export default config({
 									}),
 									// Labelling options
 									{
-										label: "Azioni",
+										label: "Actions",
 										itemLabel: (props) => props.fields.title.value,
 									},
 								),
@@ -514,7 +511,7 @@ export default config({
 									},
 								}),
 								name: fields.text({
-									label: "Nome",
+									label: "Name",
 									validation: {
 										isRequired: true,
 									},
@@ -527,15 +524,15 @@ export default config({
 							icon: GeneralIcon({ ariaHidden: true }),
 							schema: {
 								title: fields.text({
-									label: "Titolo",
+									label: "Title",
 									validation: {
 										isRequired: true,
 									},
 								}),
 								results: fields.array(
 									fields.object({
-										label: fields.text({ label: "Etichetta" }),
-										value: fields.text({ label: "Valore" }),
+										label: fields.text({ label: "Label" }),
+										value: fields.text({ label: "Value" }),
 									}),
 									// Labelling options
 									{
@@ -551,11 +548,83 @@ export default config({
 							icon: GeneralIcon({ ariaHidden: true }),
 							schema: {
 								title: fields.text({
-									label: "Titolo",
+									label: "Title",
 									validation: {
 										isRequired: true,
 									},
 								}),
+							},
+						}),
+						About: block({
+							label: "About",
+							description: "About section",
+							icon: GeneralIcon({ ariaHidden: true }),
+							schema: {
+								title: fields.text({
+									label: "Title",
+									validation: {
+										isRequired: true,
+									},
+								}),
+								subtitle: fields.text({
+									label: "Subtitle",
+									validation: {
+										isRequired: true,
+									},
+								}),
+								content: fields.text({
+									label: "Content",
+									multiline: true,
+									validation: {
+										isRequired: true,
+									},
+								}),
+							},
+						}),
+						Works: block({
+							label: "Works",
+							description: "Works section",
+							icon: GeneralIcon({ ariaHidden: true }),
+							schema: {},
+						}),
+						News: block({
+							label: "News",
+							description: "News section",
+							icon: GeneralIcon({ ariaHidden: true }),
+							schema: {},
+						}),
+						Contact: block({
+							label: "Contact",
+							description: "Contact form section",
+							icon: ContactIcon({ ariaHidden: true }),
+							schema: {
+								title: fields.text({
+									label: "Title",
+									validation: {
+										isRequired: true,
+									},
+								}),
+								fields: fields.array(
+									fields.object({
+										label: fields.text({ label: "Label" }),
+										placeholder: fields.text({ label: "Placeholder" }),
+										width: fields.number({ label: "Width" }),
+										type: fields.select({
+											label: "Type",
+											options: [
+												{ label: "Text", value: "text" },
+												{ label: "Email", value: "email" },
+												{ label: "Textarea", value: "textarea" },
+											],
+											defaultValue: "text",
+										}),
+										required: fields.checkbox({ label: "Required" }),
+									}),
+									{
+										label: "Fields",
+										itemLabel: (props) => props.fields.label.value,
+									},
+								),
 							},
 						}),
 					},
@@ -563,7 +632,7 @@ export default config({
 			},
 		}),
 		posts: collection({
-			label: "Articoli",
+			label: "Posts",
 			slugField: "title",
 			path: "src/content/posts/it/*",
 			entryLayout: "content",
@@ -573,7 +642,7 @@ export default config({
 			schema: {
 				title: fields.slug({
 					name: {
-						label: "Titolo",
+						label: "Title",
 						description: "Titolo del post",
 						validation: {
 							isRequired: true,
@@ -586,14 +655,14 @@ export default config({
 					},
 				}),
 				description: fields.text({
-					label: "Descrizione",
+					label: "Description",
 					multiline: true,
 					validation: {
 						isRequired: true,
 					},
 				}),
 				author: fields.relationship({
-					label: "Autore",
+					label: "Author",
 					description: "Autore dell'articolo",
 					collection: "authors",
 					validation: {
@@ -601,7 +670,7 @@ export default config({
 					},
 				}),
 				cover: fields.image({
-					label: "Immagine di copertina",
+					label: "Cover Image",
 					directory: "src/assets/posts",
 					publicPath: "@/assets/posts/",
 				}),
@@ -610,7 +679,7 @@ export default config({
 					itemLabel: (props) => props.value,
 				}),
 				pubDate: fields.date({
-					label: "Data pubblicazione",
+					label: "Publication Date",
 					description: "Data di pubblicazione dell'articolo",
 					defaultValue: {
 						kind: "today",
@@ -620,7 +689,7 @@ export default config({
 					},
 				}),
 				lastUpdateDate: fields.date({
-					label: "Data ultimo aggiornamento",
+					label: "Last Update Date",
 					description: "Data dell'ultimo aggiornamento dell'articolo'",
 					defaultValue: {
 						kind: "today",
@@ -630,7 +699,7 @@ export default config({
 					},
 				}),
 				hidden: fields.checkbox({
-					label: "Nascosto",
+					label: "Hidden",
 				}),
 				content: fields.markdoc({
 					label: "Content",
@@ -646,7 +715,7 @@ export default config({
 			},
 		}),
 		works: collection({
-			label: "Lavori",
+			label: "Works",
 			slugField: "title",
 			path: "src/content/works/it/*",
 			entryLayout: "content",
@@ -656,7 +725,7 @@ export default config({
 			schema: {
 				title: fields.slug({
 					name: {
-						label: "Titolo",
+						label: "Title",
 						description: "Titolo del post",
 						validation: {
 							isRequired: true,
@@ -675,7 +744,7 @@ export default config({
 					},
 				}),
 				description: fields.text({
-					label: "Descrizione",
+					label: "Description",
 					multiline: true,
 					validation: {
 						isRequired: true,
@@ -686,12 +755,12 @@ export default config({
 					itemLabel: (props) => props.value,
 				}),
 				cover: fields.image({
-					label: "Immagine di copertina",
+					label: "Cover Image",
 					directory: "src/assets/works",
 					publicPath: "@/assets/works/",
 				}),
 				pubDate: fields.date({
-					label: "Data pubblicazione",
+					label: "Publication Date",
 					description: "Data di pubblicazione dell'articolo",
 					defaultValue: {
 						kind: "today",
@@ -701,7 +770,7 @@ export default config({
 					},
 				}),
 				lastUpdateDate: fields.date({
-					label: "Data ultimo aggiornamento",
+					label: "Last Update Date",
 					description: "Data dell'ultimo aggiornamento dell'articolo'",
 					defaultValue: {
 						kind: "today",
@@ -724,7 +793,7 @@ export default config({
 			},
 		}),
 		authors: collection({
-			label: "Autori",
+			label: "Authors",
 			slugField: "name",
 			path: "src/content/authors/*",
 			columns: ["name"],
@@ -733,8 +802,8 @@ export default config({
 			schema: {
 				name: fields.slug({
 					name: {
-						label: "Nome",
-						description: "Nome e cognome dell'autore",
+						label: "Name",
+						description: "Author's full name",
 						validation: {
 							isRequired: true,
 						},

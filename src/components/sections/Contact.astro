@@ -44,9 +44,9 @@ const { title, fields } = Astro.props;
 ---
 
 <div
-	class="items-center gap-x-[6.25rem] pb-40 auto-cols-fr grid-cols-1 lg:grid-cols-[1.2fr_1fr] grid-rows-[auto] grid"
+	class="items-center gap-x-[6.25rem] pb-40 auto-cols-fr justify-center flex"
 >
-	<div class="col-span-1 row-span-1">
+	<div class="col-span-1 row-span-1 w-full max-w-3xl">
 		<h2 class="text-[2.13rem] leading-9 font-semibold mb-1">
 			{title}
 		</h2>
@@ -94,10 +94,5 @@ const { title, fields } = Astro.props;
 				</fo>
 			</div>
 		</div>
-	</div>
-	<div
-		style="background-position: 50% 50%;"
-		class='bg-[url("https://assets-global.website-files.com/651ad9f4ace66f0688974077/651c1dd6a68886e417ae1663_work-1.jpg")] bg-no-repeat bg-cover hidden lg:flex flex-col w-full h-full min-h-[29.38rem] rounded-2xl'
-	>
 	</div>
 </div>

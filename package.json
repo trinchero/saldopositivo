@@ -1,14 +1,14 @@
 {
-	"name": "@majesticostudio/majestico.co",
+	"name": "@majesticooss/mizar",
 	"type": "module",
 	"version": "0.0.1",
 	"private": true,
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/majesticostudio/pollux.git"
+		"url": "https://github.com/majesticooss/mizar.git"
 	},
-	"bugs": "https://github.com/majesticostudio/pollux/issues",
-	"homepage": "https://github.com/majesticostudio/pollux",
+	"bugs": "https://github.com/majesticooss/mizar/issues",
+	"homepage": "https://github.com/majesticooss/mizar",
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",

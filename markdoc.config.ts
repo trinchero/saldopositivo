@@ -87,10 +87,6 @@ export default defineMarkdocConfig({
 			},
 			render: component("./src/components/sections/Services.astro"),
 		},
-		VideoEffect: {
-			attributes: {},
-			render: component("./src/components/sections/VideoEffect.astro"),
-		},
 		RecentWork: {
 			attributes: {
 				title: { type: String, render: "title", required: true },
@@ -134,10 +130,6 @@ export default defineMarkdocConfig({
 				fields: { type: Array, render: "fields", required: true },
 			},
 			render: component("./src/components/sections/Contact.astro"),
-		},
-		Faq: {
-			attributes: {},
-			render: component("./src/components/sections/Faq.astro"),
 		},
 	},
 });

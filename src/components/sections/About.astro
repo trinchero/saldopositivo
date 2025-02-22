@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import about from "@/assets/pages/about/about.png";
+
 const { title, subtitle, content } = Astro.props;
 ---
 
@@ -10,9 +13,9 @@ const { title, subtitle, content } = Astro.props;
 			<div
 				class="items-center bottom-0 flex-col justify-center left-0 absolute top-0 flex w-full"
 			>
-				<img
-					src="https://assets-global.website-files.com/651ad9f4ace66f0688974077/651c1dd670d0e66f56557df9_work-2.jpg"
-					srcset="https://assets-global.website-files.com/651ad9f4ace66f0688974077/651c1dd670d0e66f56557df9_work-2-p-500.jpg 500w, https://assets-global.website-files.com/651ad9f4ace66f0688974077/651c1dd670d0e66f56557df9_work-2-p-800.jpg 800w, https://assets-global.website-files.com/651ad9f4ace66f0688974077/651c1dd670d0e66f56557df9_work-2-p-1080.jpg 1080w, https://assets-global.website-files.com/651ad9f4ace66f0688974077/651c1dd670d0e66f56557df9_work-2.jpg 1500w"
+				<Image
+					src={about}
+					alt="About"
 					class="bottom-0 left-0 object-cover absolute top-0 align-middle inline-block w-full h-full max-w-full"
 				/>
 			</div>

@@ -1,6 +1,6 @@
 {
-	"phone": "+39 0444 172 7067",
-	"mail": "info@majestico.it",
+	"phone": "+1 1234567890",
+	"mail": "info@yourcompany.com",
 	"socials": [
 		{
 			"title": "Facebook",
@@ -9,7 +9,7 @@
 		},
 		{
 			"title": "Instagram",
-			"link": "https://www.instagram.com/majestico.it",
+			"link": "https://www.instagram.com/",
 			"icon": "mdi:instagram"
 		},
 		{
