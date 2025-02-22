@@ -36,7 +36,7 @@ On the folder run
 
 ## ✅ Features
 
-- [x] Localization (with astro-i18next)
+- [x] Localization
 - [x] Blog
 - [x] CMS for editing blog post (thanks to Keystatic)
 - [x] PWA (thanks to vite-pwa)
