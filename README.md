@@ -1,4 +1,4 @@
-# [Mizar](https://mizar.majestico.it)
+# [Mizar](https://mizar.majestico.co)
 
 <a href="https://astro.build/">![Astro](.github/images/astro-icon.png)</a>
 <a href="https://tailwindcss.com/">![Tailwind](.github/images/tailwind-icon.png)</a>
@@ -15,7 +15,7 @@ This project was strongly inspired by a template found on Webflow which I can lo
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/majesticooss/mizar)
 
 
-### [🧪 Site preview →](https://mizar.majestico.it)
+### [🧪 Site preview →](https://mizar.majestico.co)
 
 ### [🧑‍🚀 Astro website →](https://astro.build/)
 
@@ -25,7 +25,7 @@ This project was strongly inspired by a template found on Webflow which I can lo
 
 ## Preview
 
-![Astros Preview](.github/images/astros-preview.png)
+![Astros Preview](.github/images/screenshot.png)
 
 ## 🧪 Test
 
