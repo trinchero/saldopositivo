@@ -404,6 +404,13 @@ const { class: className } = Astro.props;
 	init = function () {
 		canvas = document.getElementById("blob") as HTMLCanvasElement;
 		video = document.getElementById("video-blob") as HTMLVideoElement;
+
+		video.setAttribute("autoplay", "");
+        video.setAttribute("playsinline", "");
+        video.setAttribute("muted", "");
+        video.muted = true;
+        video.volume = 1;
+
 		follower = document.getElementById(
 			"blob-cursor-follower",
 		) as HTMLDivElement;
@@ -429,6 +436,19 @@ const { class: className } = Astro.props;
 		video.play();
 
 		let hasUnlockedAudio = false;
+
+        video.addEventListener("click", () => {
+          if (video.paused) video.play(); // play gesture
+
+          if (video.muted) {
+            video.muted = false;
+            video.volume = 1;
+            video.removeAttribute("muted");
+          } else {
+            video.muted = true;
+          }
+        });
+
 
         canvas.addEventListener("click", () => {
         	if (!hasUnlockedAudio) {
