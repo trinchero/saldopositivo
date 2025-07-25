@@ -10,12 +10,6 @@ const { class: className } = Astro.props;
 <div class="relative">
 	<canvas id="blob" class:list={["touch:pointer-events-none", className]}
 	></canvas>
-	<button
-      id="blob-play-button"
-      class="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:hidden bg-white/30 backdrop-blur-lg px-4 py-2 rounded-full text-white font-semibold"
-    >
-      ▶ Guarda il video
-    </button>
 	<video id="video-blob" autoplay loop muted controls>
 		<source src={myVideo} />
 		Your browser does not support the video tag.
@@ -32,19 +26,11 @@ const { class: className } = Astro.props;
 		cursor: pointer;
 	}
 	video {
-      opacity: 0;
-      position: absolute;
-      pointer-events: none;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      top: 0;
-      left: 0;
-    }
-    video:fullscreen {
-      opacity: 1;
-      pointer-events: auto;
-    }
+		display: none;
+	}
+	video:fullscreen {
+		display: block;
+	}
 	.follower {
 		pointer-events: none;
 		width: 50px;
@@ -446,13 +432,6 @@ const { class: className } = Astro.props;
 		canvas.addEventListener("click", () => {
 			openFullscreen(video);
 		});
-		const mobilePlayBtn = document.getElementById("blob-play-button");
-        if (mobilePlayBtn) {
-          mobilePlayBtn.addEventListener("click", () => {
-            openFullscreen(video);
-            video.play();
-          });
-        }
 
 		document.addEventListener("fullscreenchange", () => {
 			if (!document.fullscreenElement) {
