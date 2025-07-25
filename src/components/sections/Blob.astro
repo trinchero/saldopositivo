@@ -8,12 +8,12 @@ const { class: className } = Astro.props;
 ---
 
 <div class="relative">
+	<video id="video-blob" autoplay loop muted playsinline>
+    	<source src={myVideo} />
+    	Your browser does not support the video tag.
+    </video>
 	<canvas id="blob" class:list={["touch:pointer-events-none", className]}
 	></canvas>
-	<video id="video-blob" autoplay loop muted controls>
-		<source src={myVideo} />
-		Your browser does not support the video tag.
-	</video>
 	<div id="blob-cursor-follower" class="follower">
 		<Icon name="mdi:play-circle" size={100} />
 	</div>
@@ -429,8 +429,14 @@ const { class: className } = Astro.props;
 		video.play();
 
 		canvas.addEventListener("click", () => {
-        	video.muted = !video.muted;
-        });
+        		if (video.paused) {
+        			video.play();
+        		}
+
+        		video.muted = !video.muted;
+        		video.volume = 1;
+        		video.setAttribute("muted", String(video.muted));
+        	});
 
 		document.addEventListener("fullscreenchange", () => {
 			if (!document.fullscreenElement) {
