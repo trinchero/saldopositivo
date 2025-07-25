@@ -428,10 +428,9 @@ const { class: className } = Astro.props;
 
 		video.play();
 
-		// Add click event listener to canvas to make video full screen
 		canvas.addEventListener("click", () => {
-			openFullscreen(video);
-		});
+        	video.muted = !video.muted;
+        });
 
 		document.addEventListener("fullscreenchange", () => {
 			if (!document.fullscreenElement) {
