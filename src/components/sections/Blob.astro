@@ -1,5 +1,5 @@
 ---
-import promoVideo from "@/assets/pages/homepage/promo.webm";
+import myVideo from "@/assets/videos/my-custom-video.mp4";
 // https://codepen.io/zank/pen/zYQqygJ
 // https://whatamesh.vercel.app/
 import { Icon } from "astro-icon/components";
@@ -11,7 +11,7 @@ const { class: className } = Astro.props;
 	<canvas id="blob" class:list={["touch:pointer-events-none", className]}
 	></canvas>
 	<video id="video-blob" autoplay loop muted controls>
-		<source src={promoVideo} />
+		<source src={myVideo} />
 		Your browser does not support the video tag.
 	</video>
 	<div id="blob-cursor-follower" class="follower">
