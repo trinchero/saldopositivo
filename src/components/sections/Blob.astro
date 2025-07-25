@@ -428,33 +428,15 @@ const { class: className } = Astro.props;
 
 		video.play();
 
-        canvas.addEventListener("click", () => {
-        	// iOS Safari needs this gesture to unlock audio
-        	if (video.paused) {
-        		video.play();
-        	}
-
-        	// Force unmute
-        	video.muted = false;
-        	video.volume = 1;
-
-        	// iOS workaround: explicitly set muted attribute
-        	video.removeAttribute("muted");
-        	video.setAttribute("playsinline", "");
-
-        	// Ensure audio context resumes (optional fallback)
-        	if (typeof AudioContext !== "undefined") {
-        		try {
-        			const context = new AudioContext();
-        			if (context.state === "suspended") {
-        				context.resume();
-        			}
-        		} catch (e) {
-        			console.warn("AudioContext resume failed:", e);
+		canvas.addEventListener("click", () => {
+        		if (video.paused) {
+        			video.play();
         		}
-        	}
-        });
 
+        		video.muted = !video.muted;
+        		video.volume = 1;
+        		video.setAttribute("muted", String(video.muted));
+        	});
 
 		document.addEventListener("fullscreenchange", () => {
 			if (!document.fullscreenElement) {
