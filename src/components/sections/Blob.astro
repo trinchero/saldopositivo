@@ -428,15 +428,39 @@ const { class: className } = Astro.props;
 
 		video.play();
 
-		canvas.addEventListener("click", () => {
+		let hasUnlockedAudio = false;
+
+        canvas.addEventListener("click", () => {
+        	if (!hasUnlockedAudio) {
+        		// PRIMA INTERAZIONE: sblocca audio
         		if (video.paused) {
         			video.play();
         		}
 
-        		video.muted = !video.muted;
+        		video.muted = false;
         		video.volume = 1;
-        		video.setAttribute("muted", String(video.muted));
-        	});
+        		video.removeAttribute("muted");
+        		video.setAttribute("playsinline", "");
+
+        		// Per iOS fallback
+        		if (typeof AudioContext !== "undefined") {
+        			try {
+        				const context = new AudioContext();
+        				if (context.state === "suspended") {
+        					context.resume();
+        				}
+        			} catch (e) {
+        				console.warn("AudioContext resume failed:", e);
+        			}
+        		}
+
+        		hasUnlockedAudio = true;
+        	} else {
+        		// Successivi click: toggle audio
+        		video.muted = !video.muted;
+        	}
+        });
+
 
 		document.addEventListener("fullscreenchange", () => {
 			if (!document.fullscreenElement) {
