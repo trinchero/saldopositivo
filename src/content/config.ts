@@ -28,7 +28,6 @@ const postsCollection = defineCollection({
 			category: z.string(),
 			author: z.string(),
 			cover: image(),
-			tags: z.array(z.string()),
 			hidden: z.optional(z.boolean()),
 		}),
 });
@@ -43,7 +42,6 @@ const worksCollection = defineCollection({
 			video: z.optional(z.string()),
 			description: z.string(),
 			link: z.optional(z.string()),
-			tags: z.array(z.string()),
 			hidden: z.optional(z.boolean()),
 		}),
 });
