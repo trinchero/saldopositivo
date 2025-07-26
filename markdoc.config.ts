@@ -82,8 +82,7 @@ export default defineMarkdocConfig({
 		},
 		Services: {
 			attributes: {
-				title: { type: String, render: "title", required: true },
-				services: { type: Array, render: "services", required: true },
+				title: { type: String, render: "title", required: true }
 			},
 			render: component("./src/components/sections/Services.astro"),
 		},

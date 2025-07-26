@@ -441,22 +441,6 @@ export default config({
 										isRequired: true,
 									},
 								}),
-								services: fields.array(
-									fields.object({
-										title: fields.text({ label: "Title" }),
-										description: fields.text({ label: "Description", multiline: true }),
-										icon: fields.image({
-											label: "Icona",
-											directory: "src/assets/pages",
-											publicPath: "/src/assets/pages/",
-										}),
-									}),
-									// Labelling options
-									{
-										label: "Servizi",
-										itemLabel: (props) => props.fields.title.value,
-									},
-								),
 							},
 						}),
 						VideoEffect: block({
