@@ -8,13 +8,13 @@ export interface Props {
 }
 
 export async function getStaticPaths() {
-  return await getCollectionStaticPaths("servicedetails", "en");
+  return await getCollectionStaticPaths("servicedetails");
 }
 
-const { data: serviceDetail } = Astro.props;
-const { Content } = await serviceDetail.render();
+const { data } = Astro.props;
+const { Content } = await data.render();
 ---
 
-<ServiceLayout frontmatter={serviceDetail.data}>
+<ServiceLayout frontmatter={data.data}>
   <Content />
 </ServiceLayout>
