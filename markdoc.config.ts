@@ -97,14 +97,6 @@ export default defineMarkdocConfig({
           },
           render: component("./src/components/sections/ServiceIntro.astro"),
         },
-
-		RecentWork: {
-			attributes: {
-				title: { type: String, render: "title", required: true },
-				buttons: { type: Array, render: "buttons", required: true },
-			},
-			render: component("./src/components/sections/RecentWork.astro"),
-		},
 		Testimonial: {
 			attributes: {
 				testimonial: { type: String, render: "testimonial", required: true },
@@ -126,10 +118,6 @@ export default defineMarkdocConfig({
 				content: { type: String, render: "content", required: true },
 			},
 			render: component("./src/components/sections/About.astro"),
-		},
-		Works: {
-			attributes: {},
-			render: component("./src/components/sections/Works.astro"),
 		},
 		News: {
 			attributes: {},

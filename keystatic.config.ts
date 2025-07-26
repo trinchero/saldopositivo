@@ -449,39 +449,6 @@ export default config({
 							icon: GeneralIcon({ ariaHidden: true }),
 							schema: {},
 						}),
-						RecentWork: block({
-							label: "RecentWork",
-							description: "RecentWork",
-							icon: GeneralIcon({ ariaHidden: true }),
-							schema: {
-								title: fields.text({
-									label: "Title",
-									validation: {
-										isRequired: true,
-									},
-								}),
-								buttons: fields.array(
-									fields.object({
-										title: fields.text({ label: "Title" }),
-										href: fields.text({ label: "Url" }),
-										style: fields.select({
-											label: "Style",
-											options: [
-												{ label: "Filled", value: "button" },
-												{ label: "Outlined", value: "outline" },
-											],
-											defaultValue: "button",
-										}),
-										icon: fields.text({ label: "Icona" }),
-									}),
-									// Labelling options
-									{
-										label: "Actions",
-										itemLabel: (props) => props.fields.title.value,
-									},
-								),
-							},
-						}),
 						Testimonial: block({
 							label: "Testimonial",
 							description: "Testimonial",
@@ -564,12 +531,6 @@ export default config({
 									},
 								}),
 							},
-						}),
-						Works: block({
-							label: "Works",
-							description: "Works section",
-							icon: GeneralIcon({ ariaHidden: true }),
-							schema: {},
 						}),
 						News: block({
 							label: "News",
@@ -684,84 +645,6 @@ export default config({
 				}),
 				hidden: fields.checkbox({
 					label: "Hidden",
-				}),
-				content: fields.markdoc({
-					label: "Content",
-					options: {
-						heading: [2, 3, 4, 5, 6],
-						image: {
-							directory: "src/assets/posts",
-							publicPath: "/src/assets/posts/",
-						},
-					},
-					components: {},
-				}),
-			},
-		}),
-		works: collection({
-			label: "Works",
-			slugField: "title",
-			path: "src/content/works/es/*",
-			entryLayout: "content",
-			columns: ["title", "lastUpdateDate"],
-			previewUrl: "/works/{slug}",
-			format: { contentField: "content" },
-			schema: {
-				title: fields.slug({
-					name: {
-						label: "Title",
-						description: "Titolo del post",
-						validation: {
-							isRequired: true,
-						},
-					},
-					// Optional slug label overrides
-					slug: {
-						label: "SEO-friendly slug",
-						description: "Slug da usare per il post, attenzione, è consigliato non modificarlo dopo la pubblicazione.",
-					},
-				}),
-				link: fields.text({
-					label: "Link",
-					validation: {
-						isRequired: true,
-					},
-				}),
-				description: fields.text({
-					label: "Description",
-					multiline: true,
-					validation: {
-						isRequired: true,
-					},
-				}),
-				tags: fields.array(fields.text({ label: "Tag" }), {
-					label: "Tag",
-					itemLabel: (props) => props.value,
-				}),
-				cover: fields.image({
-					label: "Cover Image",
-					directory: "src/assets/works",
-					publicPath: "@/assets/works/",
-				}),
-				pubDate: fields.date({
-					label: "Publication Date",
-					description: "Data di pubblicazione dell'articolo",
-					defaultValue: {
-						kind: "today",
-					},
-					validation: {
-						isRequired: true,
-					},
-				}),
-				lastUpdateDate: fields.date({
-					label: "Last Update Date",
-					description: "Data dell'ultimo aggiornamento dell'articolo'",
-					defaultValue: {
-						kind: "today",
-					},
-					validation: {
-						isRequired: true,
-					},
 				}),
 				content: fields.markdoc({
 					label: "Content",
