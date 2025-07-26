@@ -1,9 +1,9 @@
 {
-	"title": "Do You Have Any Questions?<br/> Don't Hesitate to Contact Us!",
-	"copyright": "© 2024 Your Company",
+	"title": "Do You Have Any Questions?<br/> Don't Hesitate to Contact Me!",
+	"copyright": "© 2024 Julieta Paez",
 	"buttons": [
 		{
-			"text": "Contact Us",
+			"text": "Contact me",
 			"url": "/contact"
 		}
 	]

@@ -1,9 +1,9 @@
 {
-	"title": "Hai Qualche Domanda?<br/> Non esitare a contattarci!",
-	"copyright": "© 2024 La tua azienda",
+	"title": "¿Tienes alguna pregunta? ¡No dudes en contactarme!",
+	"copyright": "© 2024 Julieta Paez",
 	"buttons": [
 		{
-			"text": "Contattaci",
+			"text": "Contactame",
 			"url": "/contact"
 		}
 	]
