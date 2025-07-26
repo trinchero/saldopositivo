@@ -6,7 +6,7 @@ const currentLocale = Astro.currentLocale;
 
 // 1. Carica le immagini
 const imageMap = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/works/**/*.{jpg,jpeg,png,webp,gif,svg}",
+  "/src/assets/mentorship/**/*.{jpg,jpeg,png,webp,gif,svg}",
   { eager: true }
 );
 
