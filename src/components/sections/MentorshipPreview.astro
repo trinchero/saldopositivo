@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+const currentLocale = Astro.currentLocale;
+
+// Leggi tutti i contenuti da mentorship-details
+const allItems = await getCollection("mentorship-details");
+const items = allItems.filter(item => item.slug.startsWith(currentLocale));
+
+// Mappa di immagini da import.meta.glob
+const imageMap = import.meta.glob<{ default: ImageMetadata }>("/src/assets/works/**/*.{jpg,jpeg,png,webp}", {
+	eager: true
+});
+---
+
+<section class="py-20">
+  <div class="max-w-6xl mx-auto px-4 grid gap-12 md:grid-cols-3">
+    {items.map((item) => {
+      const coverPath = item.data.cover.replace(/^@/, '/src');
+      const image = imageMap[coverPath];
+      return (
+        <div class="flex flex-col items-center text-center" key={item.slug}>
+          {image && (
+            <Image src={image.default} alt={item.data.title} class="rounded-xl mb-6" />
+          )}
+          <h3 class="text-xl font-semibold">{item.data.title}</h3>
+          <p class="text-gray-600 mt-2">{item.data.description}</p>
+        </div>
+      );
+    })}
+  </div>
+</section>
