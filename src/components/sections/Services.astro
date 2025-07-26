@@ -27,7 +27,8 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
       class="auto-cols-fr grid-cols-1 md:grid-cols-3 grid-rows-[auto] grid gap-10"
     >
       {services.map(({ slug, data }) => (
-        <a href={`/services-detail/${currentLocale}/${slug.split("/").pop()}-detail`} class="no-underline">
+        <a href={`/services-detail/${slug.replace(/^.*\//, '')}-detail`} class="no-underline">
+
           <div class="items-stretch flex-col flex h-full max-w-[90%] m-auto col-span-1 row-span-1">
             {data.cover && (
               <Image

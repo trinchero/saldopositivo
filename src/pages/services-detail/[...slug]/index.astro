@@ -8,8 +8,33 @@ export interface Props {
 }
 
 export async function getStaticPaths() {
-  return await getCollectionStaticPaths("servicedetails");
+  const rawPaths = await getCollectionStaticPaths("servicedetails");
+
+  console.log("🔍 raw paths from helper:");
+  rawPaths.forEach((p) => console.log("→", p.params));
+
+  const paths = rawPaths.map((path) => {
+    const { lang, slug } = path.params;
+
+    const cleanedSlug = slug?.startsWith(`${lang}/`)
+      ? slug.slice(lang.length + 1)
+      : slug;
+
+    console.log("🧼 Cleaned:", { lang, slug: cleanedSlug });
+
+    return {
+      params: {
+        lang,
+        slug: cleanedSlug,
+      },
+      props: path.props,
+    };
+  });
+
+  return paths;
 }
+
+
 
 const { data } = Astro.props;
 const { Content } = await data.render();
