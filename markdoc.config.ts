@@ -130,11 +130,5 @@ export default defineMarkdocConfig({
 			},
 			render: component("./src/components/sections/Contact.astro"),
 		},
-		Proposal: {
-			attributes: {
-				title: { type: String, render: "title", required: true },
-			},
-			render: component("./src/components/sections/Proposal.astro"),
-		},
 	},
 });
