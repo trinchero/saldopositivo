@@ -4,30 +4,37 @@ import { Image } from "astro:assets";
 
 const currentLocale = Astro.currentLocale;
 
-// Leggi tutti i contenuti da mentorship-details
-const allItems = await getCollection("mentorship-details");
-const items = allItems.filter(item => item.slug.startsWith(currentLocale));
+// 1. Carica le immagini
+const imageMap = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/works/**/*.{jpg,jpeg,png,webp,gif,svg}",
+  { eager: true }
+);
 
-// Mappa di immagini da import.meta.glob
-const imageMap = import.meta.glob<{ default: ImageMetadata }>("/src/assets/works/**/*.{jpg,jpeg,png,webp}", {
-	eager: true
-});
+// 2. Recupera tutti i file della collection mentorship-details
+const allItems = await getCollection("mentorship-details");
+
+// 3. Filtra per lingua corrente
+const items = allItems.filter((item) => item.slug.startsWith(currentLocale));
 ---
 
-<section class="py-20">
-  <div class="max-w-6xl mx-auto px-4 grid gap-12 md:grid-cols-3">
-    {items.map((item) => {
-      const coverPath = item.data.cover.replace(/^@/, '/src');
-      const image = imageMap[coverPath];
-      return (
-        <div class="flex flex-col items-center text-center" key={item.slug}>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10 pt-12">
+  {items.map((item) => {
+    const coverPath = item.data.cover.replace(/^@/, '/src');
+    const image = imageMap[coverPath];
+
+    const slug = item.slug.split('/').pop();
+    const href = `/mentorship/${slug}`;
+
+    return (
+      <a href={href} class="no-underline group block" key={item.slug}>
+        <div class="flex flex-col items-center text-center transition-transform group-hover:scale-105 duration-300">
           {image && (
             <Image src={image.default} alt={item.data.title} class="rounded-xl mb-6" />
           )}
           <h3 class="text-xl font-semibold">{item.data.title}</h3>
           <p class="text-gray-600 mt-2">{item.data.description}</p>
         </div>
-      );
-    })}
-  </div>
-</section>
+      </a>
+    );
+  })}
+</div>
