@@ -67,7 +67,7 @@ const serviceDetailsCollection = defineCollection({
       cover: z.optional(image()),
       description: z.string(),
       hidden: z.optional(z.boolean()),
-      contentType: z.literal("servicedetail"),
+      contentType: z.literal("servicedetails"),
     }),
 });
 
