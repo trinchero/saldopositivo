@@ -58,9 +58,23 @@ const servicesCollection = defineCollection({
 		}),
 });
 
+const serviceDetailsCollection = defineCollection({
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      pubDate: z.date(),
+      lastUpdateDate: z.date(),
+      cover: z.optional(image()),
+      description: z.string(),
+      hidden: z.optional(z.boolean()),
+      contentType: z.literal("servicedetail"),
+    }),
+});
+
 export const collections = {
 	posts: postsCollection,
 	pages: pagesCollection,
 	services: servicesCollection,
 	works: worksCollection,
+	servicedetails: serviceDetailsCollection,
 };
