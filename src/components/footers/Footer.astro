@@ -154,26 +154,6 @@ const lastPosts = posts
 									}
 								</ul>
 							</div>
-							<div
-								class="items-start flex-col flex gap-[0.63rem]"
-							>
-								<p
-									class="text-white border-b-2 text-lg pb-1 mb-3 border-white border-solid"
-								>
-									Latest posts
-								</p>
-								<ul class="text-white/[0.65] mb-3 list-none">
-									{
-										lastPosts.map(
-											({ data: { title }, slug }) => (
-												<li>
-													<a href={slug}>{title}</a>
-												</li>
-											),
-										)
-									}
-								</ul>
-							</div>
 						</div>
 					</div>
 				</div>

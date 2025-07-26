@@ -1,11 +1,11 @@
 {
 	"phone": "+1 1234567890",
-	"mail": "info@yourcompany.com",
+	"mail": "info@saldopositivo.com",
 	"socials": [
 		{
-			"title": "Facebook",
-			"link": "https://facebook.com",
-			"icon": "ic:baseline-facebook"
+			"title": "Linkedin",
+			"link": "linkedin.com/in/julieta-npaez/",
+			"icon": "mdi:linkedin"
 		},
 		{
 			"title": "Instagram",
@@ -13,8 +13,8 @@
 			"icon": "mdi:instagram"
 		},
 		{
-			"title": "Youtube",
-			"link": "https://www.youtube.com/",
+			"title": "Tiktok",
+			"link": "test/",
 			"icon": "mdi:youtube"
 		}
 	]
