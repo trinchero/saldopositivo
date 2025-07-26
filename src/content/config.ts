@@ -18,20 +18,6 @@ const pagesCollection = defineCollection({
 		}),
 });
 
-const postsCollection = defineCollection({
-	schema: ({ image }) =>
-		z.object({
-			title: z.string(),
-			pubDate: z.date(),
-			lastUpdateDate: z.date(),
-			description: z.string(),
-			category: z.string(),
-			author: z.string(),
-			cover: image(),
-			hidden: z.optional(z.boolean()),
-		}),
-});
-
 const servicesCollection = defineCollection({
 	schema: ({ image }) =>
 		z.object({
@@ -58,7 +44,6 @@ const serviceDetailsCollection = defineCollection({
 });
 
 export const collections = {
-	posts: postsCollection,
 	pages: pagesCollection,
 	services: servicesCollection,
 	servicedetails: serviceDetailsCollection,

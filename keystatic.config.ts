@@ -16,7 +16,6 @@ import {
 	PopularServicesIcon,
 	PostListIcon,
 	ProseIcon,
-	TestimonialIcon,
 	TitleImageIcon,
 } from "./.keystatic/keystatic-icons";
 import { BrandMarkComponent } from "./.keystatic/mark";
@@ -449,50 +448,6 @@ export default config({
 							icon: GeneralIcon({ ariaHidden: true }),
 							schema: {},
 						}),
-						Testimonial: block({
-							label: "Testimonial",
-							description: "Testimonial",
-							icon: GeneralIcon({ ariaHidden: true }),
-							schema: {
-								testimonial: fields.text({
-									label: "Testimonial",
-									multiline: true,
-									validation: {
-										isRequired: true,
-									},
-								}),
-								name: fields.text({
-									label: "Name",
-									validation: {
-										isRequired: true,
-									},
-								}),
-							},
-						}),
-						Results: block({
-							label: "Results",
-							description: "Results",
-							icon: GeneralIcon({ ariaHidden: true }),
-							schema: {
-								title: fields.text({
-									label: "Title",
-									validation: {
-										isRequired: true,
-									},
-								}),
-								results: fields.array(
-									fields.object({
-										label: fields.text({ label: "Label" }),
-										value: fields.text({ label: "Value" }),
-									}),
-									// Labelling options
-									{
-										label: "Risultati",
-										itemLabel: (props) => props.fields.label.value,
-									},
-								),
-							},
-						}),
 						BlogLatest: block({
 							label: "BlogLatest",
 							description: "BlogLatest",
@@ -532,11 +487,6 @@ export default config({
 								}),
 							},
 						}),
-						News: block({
-							label: "News",
-							description: "News section",
-							icon: GeneralIcon({ ariaHidden: true }),
-							schema: {},
 						}),
 						Contact: block({
 							label: "Contact",
