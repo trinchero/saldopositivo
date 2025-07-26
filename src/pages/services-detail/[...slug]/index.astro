@@ -1,0 +1,20 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ServiceLayout from "@/layouts/ServiceLayout.astro";
+import { getCollectionStaticPaths } from "@/lib/collection-helpers";
+
+export interface Props {
+  data: CollectionEntry<"servicedetails">;
+}
+
+export async function getStaticPaths() {
+  return await getCollectionStaticPaths("servicedetails", "en");
+}
+
+const { data: serviceDetail } = Astro.props;
+const { Content } = await serviceDetail.render();
+---
+
+<ServiceLayout frontmatter={serviceDetail.data}>
+  <Content />
+</ServiceLayout>

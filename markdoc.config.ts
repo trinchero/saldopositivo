@@ -86,15 +86,18 @@ export default defineMarkdocConfig({
 			},
 			render: component("./src/components/sections/Services.astro"),
 		},
-		ServiceIntro: {
+
+        ServiceIntro: {
           attributes: {
             title: { type: String, required: true },
             subtitle: { type: String, required: true },
             description: { type: String, required: true },
-            button: { type: Object, required: false },
+            buttonTitle: { type: String, required: true },
+            buttonHref: { type: String, required: true },
           },
           render: component("./src/components/sections/ServiceIntro.astro"),
         },
+
 		RecentWork: {
 			attributes: {
 				title: { type: String, render: "title", required: true },
