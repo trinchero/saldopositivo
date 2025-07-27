@@ -1,0 +1,14 @@
+---
+// rotta pubblica: /terms
+import PageLegalLayout from "@/layouts/PageLegalLayout.astro";
+import { getEntryBySlug } from "astro:content";
+
+const entry = await getEntryBySlug("pages", "legal/terms");
+if (!entry) throw new Error("Contenuto termini non trovato");
+
+const { Content } = await entry.render();
+---
+
+<PageLegalLayout frontmatter={entry.data}>
+  <Content />
+</PageLegalLayout>

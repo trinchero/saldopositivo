@@ -1,0 +1,14 @@
+---
+// rotta pubblica: /privacy-policy
+import PageLegalLayout from "@/layouts/PageLegalLayout.astro";
+import { getEntryBySlug } from "astro:content";
+
+const entry = await getEntryBySlug("pages", "legal/privacy");
+if (!entry) throw new Error("Contenuto privacy non trovato");
+
+const { Content } = await entry.render();
+---
+
+<PageLegalLayout frontmatter={entry.data}>
+  <Content />
+</PageLegalLayout>

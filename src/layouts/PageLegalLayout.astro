@@ -1,0 +1,58 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Container from "@/components/primitives/Container.astro";
+import Prose from "@/components/primitives/Prose.astro";
+import Title from "@/components/primitives/Title.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+type Props = {
+  frontmatter: CollectionEntry<"pages">["data"];
+};
+
+const { frontmatter } = Astro.props;
+
+let formattedDate: string | null = null;
+
+if (frontmatter.lastUpdateDate) {
+  const date = new Date(frontmatter.lastUpdateDate);
+  formattedDate = date.toLocaleDateString("it-IT", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
+---
+
+<BaseLayout seo={frontmatter.seo}>
+  <section class="bg-slate-100 py-24 md:py-32 border-b border-gray-200">
+    <Container>
+      <div class="max-w-3xl mx-auto text-center space-y-6">
+        <Title level={1} class="text-4xl md:text-5xl font-extrabold text-gray-900">
+          {frontmatter.title}
+        </Title>
+
+        {frontmatter.subtitle && (
+          <p class="text-lg md:text-xl text-gray-600">
+            {frontmatter.subtitle}
+          </p>
+        )}
+
+        {formattedDate && (
+          <p class="text-sm text-gray-400 italic">
+            Ultimo aggiornamento: {formattedDate}
+          </p>
+        )}
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-16 md:py-24 bg-white">
+    <Container>
+      <div class="max-w-3xl mx-auto">
+        <Prose>
+          <slot />
+        </Prose>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>
