@@ -12,9 +12,14 @@ const currentPath = Astro.props.currentPath ?? Astro.url.pathname;
 
 const { footer, contacts } = getLocalizedSettings(currentLocale);
 
+
 function getTranslatedUrl(locale: string): string {
-	const unlocalizedPath = unlocalizedUrl(currentPath);
-	return translatePath(locale, unlocalizedPath);
+  // rimuovi prefisso lingua se è incluso
+  const clean = currentPath?.startsWith(`/${currentLocale}/`)
+    ? currentPath.replace(`/${currentLocale}`, '')
+    : currentPath;
+
+  return translatePath(locale, clean ?? '/');
 }
 
 function isActiveLocale(locale: string): boolean {
@@ -27,11 +32,12 @@ const services = await getCollection("services");
 // get top 6 pages which are informational pages
 const topInfoPages = pages
 	.map((page) => {
-		const [lang, ...slug] = page.slug.split("/");
+		const [lang, ...slugParts] = page.slug.split("/");
+		const cleanPath = `/${slugParts.join("/")}`;
 		return {
 			...page,
-			lang: lang,
-			slug: page.slug.startsWith("/") ? page.slug : `/${page.slug}`,
+			lang,
+			slug: translatePath(lang, cleanPath),
 		};
 	})
 	.filter(
