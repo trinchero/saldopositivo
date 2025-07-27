@@ -33,7 +33,14 @@ const services = await getCollection("services");
 const topInfoPages = pages
 	.map((page) => {
 		const [lang, ...slugParts] = page.slug.split("/");
-		const cleanPath = `/${slugParts.join("/")}`;
+		const slug = slugParts.join("/");
+
+		// Homepage: route speciale
+		const cleanPath =
+			slug === "homepage" || slug === "index"
+				? "/"
+				: `/${slug}`;
+
 		return {
 			...page,
 			lang,
@@ -45,6 +52,7 @@ const topInfoPages = pages
 			page.lang === currentLocale && page.data.type === "informational",
 	)
 	.slice(0, 6);
+
 
 const topServices = services
 	.map((page) => {
