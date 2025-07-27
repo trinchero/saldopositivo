@@ -1,3 +1,4 @@
+---
 import type { CollectionEntry } from "astro:content";
 import ServiceLayout from "@/layouts/ServiceLayout.astro";
 import { getCollectionStaticPaths } from "@/lib/collection-helpers";
@@ -10,44 +11,30 @@ export async function getStaticPaths() {
   const rawPaths = await getCollectionStaticPaths("servicedetails");
 
   console.log("🔍 raw paths from helper:");
-  rawPaths.forEach((p) => {
-    console.log("→", p.params);
-  });
+  rawPaths.forEach((p) => console.log("→", p.params));
 
   const paths = rawPaths.map((path) => {
-    const { lang } = path.params;
-    let slug = path.params.slug;
+    const { lang, slug } = path.params;
 
-    // Rimozione del doppio prefisso tipo "es/es/..."
-    if (typeof slug === "string" && slug.startsWith(`${lang}/`)) {
-      slug = slug.slice(lang.length + 1);
-    }
+    const cleanedSlug = slug?.startsWith(`${lang}/`)
+      ? slug.slice(lang.length + 1)
+      : slug;
 
-    const slugParts = lang === "en" ? [slug] : [lang, slug];
-    const fullPath = `/services-detail/${slugParts.join("/")}`;
-
-    // 🔍 Log completo per ogni path generato
-    console.log("–––––––––––––––––––––––––––");
-    console.log("🌍 Lang:", lang);
-    console.log("📦 Original slug:", path.params.slug);
-    console.log("🧼 Cleaned slug:", slug);
-    console.log("✅ Static path generated:", fullPath);
-    console.log("–––––––––––––––––––––––––––");
+    console.log("🧼 Cleaned:", { lang, slug: cleanedSlug });
 
     return {
       params: {
-        slug: slugParts,
-      },
-      props: {
-        ...path.props,
         lang,
+        slug: cleanedSlug,
       },
+      props: path.props,
     };
   });
 
-  console.log("✅✅ Fine generazione static paths ✅✅");
   return paths;
 }
+
+
 
 const { data } = Astro.props;
 const { Content } = await data.render();
