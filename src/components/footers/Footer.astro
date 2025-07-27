@@ -7,11 +7,13 @@ import { translatePath, unlocalizedUrl } from "@/lib/localization-helpers";
 import { defaultLocale, locales } from "site";
 
 const currentLocale = Astro.currentLocale;
+const currentPath = Astro.props.currentPath ?? Astro.url.pathname;
+
 
 const { footer, contacts } = getLocalizedSettings(currentLocale);
 
 function getTranslatedUrl(locale: string): string {
-	const unlocalizedPath = unlocalizedUrl(Astro.url.pathname);
+	const unlocalizedPath = unlocalizedUrl(currentPath);
 	return translatePath(locale, unlocalizedPath);
 }
 
@@ -21,7 +23,6 @@ function isActiveLocale(locale: string): boolean {
 
 const pages = await getCollection("pages");
 const services = await getCollection("services");
-const posts = await getCollection("posts");
 
 // get top 6 pages which are informational pages
 const topInfoPages = pages
@@ -54,25 +55,6 @@ const topServices = services
 	.filter((page) => page.lang === currentLocale)
 	.slice(0, 6);
 
-const lastPosts = posts
-	.map((page) => {
-		const [lang, ...slug] = page.slug.split("/");
-		return {
-			...page,
-			lang: lang,
-			slug: translatePath(
-				lang,
-				`/post${unlocalizedUrl(`/${page.slug}`)}`,
-			),
-		};
-	})
-	.filter((page) => page.lang === currentLocale)
-	.sort(
-		(a, b) =>
-			new Date(b.data.lastUpdateDate).getTime() -
-			new Date(a.data.lastUpdateDate).getTime(),
-	)
-	.slice(0, 5);
 ---
 
 <div

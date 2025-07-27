@@ -30,6 +30,6 @@ const { seo } = Astro.props;
 		<Navigation showTopBar />
 		<slot />
 		{widget.enabled && <Widget />}
-		<Footer />
+		<Footer currentPath={Astro.url.pathname} />
 	</body>
 </html>
