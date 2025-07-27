@@ -61,9 +61,9 @@ const topServices = services
 			...page,
 			lang: lang,
 			slug: translatePath(
-				lang,
-				`/service${unlocalizedUrl(`/${page.slug}`)}`,
-			),
+              lang,
+              `/services-detail/${page.slug.split('/').pop()}-detail`
+            )
 		};
 	})
 	.filter((page) => page.lang === currentLocale)
