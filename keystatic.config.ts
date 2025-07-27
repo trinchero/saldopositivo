@@ -487,7 +487,6 @@ export default config({
 								}),
 							},
 						}),
-						}),
 						Contact: block({
 							label: "Contact",
 							description: "Contact form section",
