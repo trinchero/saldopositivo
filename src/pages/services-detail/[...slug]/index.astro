@@ -10,17 +10,19 @@ export interface Props {
 export async function getStaticPaths() {
   const rawPaths = await getCollectionStaticPaths("servicedetails");
 
-  console.log("🔍 raw paths from helper:");
-  rawPaths.forEach((p) => console.log("→", p.params));
+  console.log("🔍 [getStaticPaths] Raw paths from helper:");
+  rawPaths.forEach((p, i) => {
+    console.log(`→ [${i}] lang: ${p.params.lang}, slug: ${p.params.slug}`);
+  });
 
-  const paths = rawPaths.map((path) => {
+  const paths = rawPaths.map((path, i) => {
     const { lang, slug } = path.params;
 
     const cleanedSlug = slug?.startsWith(`${lang}/`)
       ? slug.slice(lang.length + 1)
       : slug;
 
-    console.log("🧼 Cleaned:", { lang, slug: cleanedSlug });
+    console.log(`🧼 [${i}] Cleaned slug: ${cleanedSlug} (lang: ${lang})`);
 
     return {
       params: {
@@ -31,10 +33,9 @@ export async function getStaticPaths() {
     };
   });
 
+  console.log(`✅ Total paths returned: ${paths.length}`);
   return paths;
 }
-
-
 
 const { data } = Astro.props;
 const { Content } = await data.render();
