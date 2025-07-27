@@ -11,9 +11,7 @@ export async function getStaticPaths() {
   const rawPaths = await getCollectionStaticPaths("servicedetails");
 
   console.log("🔍 raw paths from helper:");
-  rawPaths.forEach((p) => {
-    console.log("→ lang:", p.params.lang, "slug:", p.params.slug);
-  });
+  rawPaths.forEach((p) => console.log("→", p.params));
 
   const paths = rawPaths.map((path) => {
     const { lang, slug } = path.params;
@@ -24,17 +22,10 @@ export async function getStaticPaths() {
 
     console.log("🧼 Cleaned:", { lang, slug: cleanedSlug });
 
-    const fullSlugPath = lang === "en"
-      ? `/services-detail/${cleanedSlug}`
-      : `/services-detail/${lang}/${cleanedSlug}`;
-
-    console.log("✅ Path generated:", fullSlugPath);
-
     return {
       params: {
-        slug: fullSlugPath
-          .replace("/services-detail/", "")
-          .split("/"), // string[] per [...slug]
+        lang,
+        slug: cleanedSlug,
       },
       props: path.props,
     };
@@ -42,6 +33,8 @@ export async function getStaticPaths() {
 
   return paths;
 }
+
+
 
 const { data } = Astro.props;
 const { Content } = await data.render();
