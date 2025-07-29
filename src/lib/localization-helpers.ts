@@ -1,10 +1,10 @@
 import contacts from "@/content/global/contacts.json";
-import footerEn from "@/content/global/en/footer.json";
-import headerEn from "@/content/global/en/header.json";
-import seoEn from "@/content/global/en/seo.json";
-import footerIt from "@/content/global/es/footer.json";
-import headerIt from "@/content/global/es/header.json";
-import seoIt from "@/content/global/es/seo.json";
+import footerEn from "@/content/global/footer.json";
+import headerEn from "@/content/global/header.json";
+import seoEn from "@/content/global/seo.json";
+import footerIt from "@/content/global/footer.json";
+import headerIt from "@/content/global/header.json";
+import seoIt from "@/content/global/seo.json";
 import style from "@/content/global/style.json";
 import widget from "@/content/global/widget.json";
 import { defaultLocale, locales } from "site.config";
