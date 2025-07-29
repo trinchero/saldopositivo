@@ -3,32 +3,29 @@ import { getEntryBySlug, getCollection } from "astro:content";
 import MentorshipLayout from "@/layouts/MentorshipLayout.astro";
 
 export async function getStaticPaths() {
-  const currentLocale = "en"; // oppure gestisci più lingue se vuoi
   const entries = await getCollection("mentorship-details");
 
-  return entries
-    .filter((entry) => entry.slug.startsWith(`${currentLocale}/`))
-    .map((entry) => {
-      const slug = entry.slug.split("/").pop();
-      return {
-        params: { slug },
-        props: { slug },
-      };
-    });
+  return entries.map((entry) => {
+    const slug = entry.slug; // oppure `.split("/").pop()` se preferisci URL più puliti
+    return {
+      params: { slug },
+      props: { slug },
+    };
+  });
 }
 
 const { slug } = Astro.params;
-const currentLocale = Astro.currentLocale;
 
-const entry = await getEntryBySlug("mentorship-details", `${currentLocale}/${slug}`);
+// Qui basta usare lo slug diretto, senza prefisso lingua
+const entry = await getEntryBySlug("mentorship-details", slug);
 
 if (!entry) {
-  throw new Error(`Mentorship detail not found: ${currentLocale}/${slug}`);
+  throw new Error(`Mentorship detail not found: ${slug}`);
 }
 
 const { Content, data } = await entry.render();
----
 
-<MentorshipLayout frontmatter={entry}>
-  <Content />
-</MentorshipLayout>
+console.log("MENTORSHIP DATA:", data);
+
+---
+<MentorshipLayout frontmatter={data}>
