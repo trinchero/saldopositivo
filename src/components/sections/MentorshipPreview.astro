@@ -2,8 +2,6 @@
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
-const currentLocale = Astro.currentLocale;
-
 // 1. Carica le immagini
 const imageMap = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/mentorship/**/*.{jpg,jpeg,png,webp,gif,svg}",
@@ -13,8 +11,8 @@ const imageMap = import.meta.glob<{ default: ImageMetadata }>(
 // 2. Recupera tutti i file della collection mentorship-details
 const allItems = await getCollection("mentorship-details");
 
-// 3. Filtra per lingua corrente
-const items = allItems.filter((item) => item.slug.startsWith(currentLocale));
+// 3. NON filtrare per lingua
+const items = allItems;
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pt-12">
