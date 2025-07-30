@@ -1,13 +1,28 @@
 ---
-import { Image } from "astro:assets";
 import { getLocalizedSettings } from "@/lib/localization-helpers";
 
+// 1. Recupera header
 const { header } = getLocalizedSettings();
-const logoPath = header.logo?.imagePath;
 
+// 2. Importa immagini PRIMA di usarle
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/global/**/*.{webp,jpeg,jpg,png,gif,svg}",
+  "/src/assets/global/**/*.{svg,png,jpg,jpeg,webp}"
 );
+
+// 3. Risolvi il logo dinamicamente
+let logoUrl: string | undefined;
+
+if (header.logo?.imagePath) {
+  const match = Object.entries(images).find(([path]) =>
+    path.endsWith(`/global/${header.logo.imagePath}`)
+  );
+
+  if (match) {
+    const mod = await match[1]();
+    logoUrl = mod.default.src;
+  }
+}
+
 ---
 <style>
   .menu-icon {
@@ -84,7 +99,12 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
     <div class="items-center flex-wrap justify-start relative flex text-blue-700 z-20">
       <a href="/" id="header-logo" class="text-blue-700 justify-self-start lg:justify-self-center underline inline-block max-w-full">
         <!-- SVG o <Image src={logoPath} /> -->
-        <img src={logoPath} alt="Logo" class="w-10 h-10" />
+
+        {logoUrl && (
+          <img src={logoUrl} alt="Logo" class="w-10 h-10" />
+        )}
+
+
       </a>
     </div>
 

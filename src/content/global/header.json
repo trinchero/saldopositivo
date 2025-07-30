@@ -1,6 +1,6 @@
 {
 	"logo": {
-		"imagePath": "/src/assets/global/navigation/logo.svg"
+		"imagePath": "navigation/logo.svg"
 	},
 	"pages": [
 		{
