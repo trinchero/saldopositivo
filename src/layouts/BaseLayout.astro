@@ -28,7 +28,9 @@ const { seo } = Astro.props;
 		<LoadingIndicator />
 		<LinesWrapper />
 		<Navigation showTopBar />
-		<slot />
+		<div class="mb-32">
+          <slot />
+        </div>
 		{widget.enabled && <Widget />}
 		<Footer currentPath={Astro.url.pathname} />
 	</body>

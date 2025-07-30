@@ -8,6 +8,7 @@ import LinesWrapper from "@/components/primitives/LinesWrapper.astro";
 import LoadingIndicator from "@/components/primitives/LoadingIndicator.astro";
 import Widget from "@/components/primitives/Widget.astro";
 import MentorshipPreview from "@/components/sections/MentorshipPreview.astro"; // nuovo import
+//add here free
 
 import { getLocalizedSettings } from "@/lib/localization-helpers";
 import type { SEOProps } from "astro-seo";
@@ -35,6 +36,7 @@ const showMentorshipPreview = pathname.includes("mentorship-detail");
 		<slot />
 		{showMentorshipPreview && <MentorshipPreview />}
 		{widget.enabled && <Widget />}
+		<div class="mb-32" />
 		<Footer />
 	</body>
 </html>

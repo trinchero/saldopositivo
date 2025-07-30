@@ -39,6 +39,8 @@ const { frontmatter } = Astro.props;
 				</Container>
 			</header>
 		)}
-		<slot />
+		<div class="mb-32">
+          <slot />
+        </div>
 	</main>
 </BaseLayout>
