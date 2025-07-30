@@ -7,7 +7,6 @@ const pagesCollection = defineCollection({
       subtitle: z.optional(z.string()),
       description: z.optional(z.string()),
       type: z.string(),
-      lastUpdateDate: z.date(),
       hideTitle: z.optional(z.boolean()),
       hidden: z.optional(z.boolean()),
       cover: z.optional(image()),
@@ -25,7 +24,6 @@ const servicesCollection = defineCollection({
 		z.object({
 			title: z.string(),
 			pubDate: z.date(),
-			lastUpdateDate: z.date(),
 			cover: z.optional(image()),
 			description: z.string(),
 			hidden: z.optional(z.boolean()),
@@ -42,6 +40,14 @@ const serviceDetailsCollection = defineCollection({
       description: z.string(),
       hidden: z.optional(z.boolean()),
       contentType: z.literal("servicedetails"),
+      resources: z
+        .array(
+          z.object({
+            title: z.string(),
+            file: z.string(), // URL al file PDF
+          })
+        )
+        .optional(),
     }),
 });
 

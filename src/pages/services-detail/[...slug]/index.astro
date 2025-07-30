@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import ServiceLayout from "@/layouts/ServiceLayout.astro";
+import FreeResourceLayout from "@/layouts/FreeResourceLayout.astro";
 import { getCollectionStaticPaths } from "@/lib/collection-helpers";
 
 export interface Props {
@@ -10,37 +11,33 @@ export interface Props {
 export async function getStaticPaths() {
   const rawPaths = await getCollectionStaticPaths("servicedetails");
 
-  console.log("🔍 [getStaticPaths] Raw paths from helper:");
-  rawPaths.forEach((p, i) => {
-    console.log(`→ [${i}] lang: ${p.params.lang}, slug: ${p.params.slug}`);
-  });
-
-  const paths = rawPaths.map((path, i) => {
-    const { lang, slug } = path.params;
-
+  return rawPaths.map(({ params, props }) => {
+    const { lang, slug } = params;
     const cleanedSlug = slug?.startsWith(`${lang}/`)
       ? slug.slice(lang.length + 1)
       : slug;
-
-    console.log(`🧼 [${i}] Cleaned slug: ${cleanedSlug} (lang: ${lang})`);
 
     return {
       params: {
         lang,
         slug: cleanedSlug,
       },
-      props: path.props,
+      props,
     };
   });
-
-  console.log(`✅ Total paths returned: ${paths.length}`);
-  return paths;
 }
 
 const { data } = Astro.props;
 const { Content } = await data.render();
+const isFreeResource = data.slug.endsWith("freeresource-detail");
 ---
 
-<ServiceLayout frontmatter={data.data}>
-  <Content />
-</ServiceLayout>
+{isFreeResource ? (
+  <FreeResourceLayout frontmatter={data.data}>
+    <Content />
+  </FreeResourceLayout>
+) : (
+  <ServiceLayout frontmatter={data.data}>
+    <Content />
+  </ServiceLayout>
+)}
