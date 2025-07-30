@@ -53,12 +53,9 @@ if (Tag === "a" && !href) {
 }
 
 const styles = {
-	primary: "",
-	button: "button-primary bg-black text-white items-center justify-center py-2.5 px-6 text-center inline-block max-w-full rounded-md font-semibold",
-	buttonLight:
-		"button-primary bg-white text-black items-center justify-center py-3.5 px-6 text-center inline-block max-w-full rounded-md font-bold",
-	outline:
-		"hover:bg-primary-800 hover:text-white border border-primary-100 rounded-md",
+	button: "button-primary custom-theme-button",
+	buttonLight: "button-primary custom-theme-button",
+	outline: "custom-theme-button border hover:bg-primary-800 hover:text-white",
 };
 ---
 
@@ -92,4 +89,12 @@ const styles = {
 	.button-primary:hover [data-icon="iconamoon:arrow-top-right-1-thin"] {
 		transform: translate(3px, -3px);
 	}
+
+	.custom-theme-button {
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: 1px solid var(--button-border);
+      border-radius: var(--button-radius);
+      transition: all 0.3s ease;
+    }
 </style>

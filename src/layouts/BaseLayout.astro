@@ -1,4 +1,5 @@
 ---
+import ThemeEditor from "@/components/ThemeEditor.tsx";
 import { ViewTransitions } from "astro:transitions";
 import Head from "@/components/Head.astro";
 import Footer from "@/components/footers/Footer.astro";
@@ -25,6 +26,7 @@ const { seo } = Astro.props;
 		<ViewTransitions />
 	</Head>
 	<body>
+	<ThemeEditor client:load />
 		<LoadingIndicator />
 		<LinesWrapper />
 		<Navigation showTopBar />

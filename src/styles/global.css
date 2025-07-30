@@ -3,8 +3,16 @@
 @tailwind utilities;
 
 :root {
-	--base-padding-x: 1rem;
-	--base-padding-y: 1rem;
+  --bg-color: black;
+  --text-color: white;
+  --font-family: 'Inter', sans-serif;
+  --base-padding-x: 1rem;
+  --base-padding-y: 1rem;
+
+  --button-bg: #000000;
+    --button-text: #ffffff;
+    --button-border: #000000;
+    --button-radius: 0.5rem;
 }
 
 @media (min-width: 1024px) {
@@ -66,5 +74,8 @@ html {
 	background-color: #000;
 }
 body {
-	background-color: #F1F0F0;
+  background-color: var(--bg-color, #F1F0F0);
+  color: var(--text-color, white);
+  font-family: var(--font-family, 'Inter', sans-serif);
+  transition: all 0.3s ease;
 }
