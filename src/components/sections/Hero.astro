@@ -10,15 +10,6 @@ interface Props {
 	buttons?: ButtonProps[];
 }
 
-const defaultButtons: ButtonProps[] = [
-	{
-		title: "Contattaci",
-		href: "/contact",
-		style: "button",
-		icon: "iconamoon:arrow-top-right-1-thin",
-	},
-];
-
 const { title, subtitle, buttons = defaultButtons } = Astro.props;
 ---
 
