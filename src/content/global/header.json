@@ -4,7 +4,7 @@
 	},
 	"pages": [
 		{
-			"title": "Home",
+			"title": "Inicio",
 			"link": "/"
 		},
 		{
@@ -12,7 +12,7 @@
 			"link": "/about"
 		},
 		{
-			"title": "Contact",
+			"title": "Contacto",
 			"link": "/contact"
 		}
 	],

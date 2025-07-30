@@ -3,71 +3,32 @@ import { getCollection } from "astro:content";
 import Container from "@/components/primitives/Container.astro";
 import Link from "@/components/primitives/Link.astro";
 import { getLocalizedSettings } from "@/lib/localization-helpers";
-import { translatePath, unlocalizedUrl } from "@/lib/localization-helpers";
-import { defaultLocale, locales } from "site";
 
-const currentLocale = Astro.currentLocale;
-const currentPath = Astro.props.currentPath ?? Astro.url.pathname;
-
-
-const { footer, contacts } = getLocalizedSettings(currentLocale);
-
-
-function getTranslatedUrl(locale: string): string {
-  // rimuovi prefisso lingua se è incluso
-  const clean = currentPath?.startsWith(`/${currentLocale}/`)
-    ? currentPath.replace(`/${currentLocale}`, '')
-    : currentPath;
-
-  return translatePath(locale, clean ?? '/');
-}
-
-function isActiveLocale(locale: string): boolean {
-	return locale === currentLocale;
-}
+const currentPath = Astro.url.pathname;
+const { footer, contacts } = getLocalizedSettings();
 
 const pages = await getCollection("pages");
 const services = await getCollection("services");
 
-// get top 6 pages which are informational pages
 const topInfoPages = pages
-	.map((page) => {
-		const [lang, ...slugParts] = page.slug.split("/");
-		const slug = slugParts.join("/");
-
-		// Homepage: route speciale
-		const cleanPath =
-			slug === "homepage" || slug === "index"
-				? "/"
-				: `/${slug}`;
-
-		return {
-			...page,
-			lang,
-			slug: translatePath(lang, cleanPath),
-		};
-	})
-	.filter(
-		(page) =>
-			page.lang === currentLocale && page.data.type === "informational",
-	)
-	.slice(0, 6);
-
+  .map((page) => {
+    const slug = page.slug.replace(/^es\//, "");
+    const cleanPath =
+      slug === "homepage" || slug === "index" ? "/" : `/${slug}`;
+    return {
+      ...page,
+      slug: cleanPath,
+    };
+  })
+  .filter((page) => page.data.type === "informational")
+  .slice(0, 6);
 
 const topServices = services
-	.map((page) => {
-		const [lang, ...slug] = page.slug.split("/");
-		return {
-			...page,
-			lang: lang,
-			slug: translatePath(
-              lang,
-              `/services-detail/${page.slug.split('/').pop()}-detail`
-            )
-		};
-	})
-	.filter((page) => page.lang === currentLocale)
-	.slice(0, 6);
+  .map((page) => ({
+    ...page,
+    slug: `/services-detail/${page.slug.split("/").pop()}-detail`,
+  }))
+  .slice(0, 6);
 
 ---
 
