@@ -13,6 +13,11 @@
     --button-text: #ffffff;
     --button-border: #000000;
     --button-radius: 0.5rem;
+     --footer-bg: #000000;
+      --footer-text: #ffffff;
+      --footer-link: #ffffff;
+      --footer-border: #ffffff;
+
 }
 
 @media (min-width: 1024px) {
