@@ -8,6 +8,9 @@ import LoadingIndicator from "@/components/primitives/LoadingIndicator.astro";
 import Widget from "@/components/primitives/Widget.astro";
 import { getLocalizedSettings } from "@/lib/localization-helpers";
 import type { SEOProps } from "astro-seo";
+import { defineConfig } from "astro/config";
+import icons from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 const currentLocale = Astro.currentLocale;
 
@@ -27,6 +30,33 @@ const { seo } = Astro.props;
 	<body>
 		<LoadingIndicator />
 		<LinesWrapper />
+		<div class="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex gap-4">
+          <a
+            href="https://www.linkedin.com/in/julieta-npaez/"
+            target="_blank"
+            aria-label="LinkedIn"
+            class="p-1 rounded-full hover:bg-gray-100/20 transition"
+          >
+            <Icon name="mdi:linkedin" size="22" class="text-gray-700" />
+          </a>
+          <a
+            href="https://www.instagram.com/saldopositivo.eu/"
+            target="_blank"
+            aria-label="Instagram"
+            class="p-1 rounded-full hover:bg-gray-100/20 transition"
+          >
+            <Icon name="mdi:instagram" size="22" class="text-gray-700" />
+          </a>
+          <a
+            href="https://www.tiktok.com/@ary.paez"
+            target="_blank"
+            aria-label="TikTok"
+            class="p-1 rounded-full hover:bg-gray-100/20 transition"
+          >
+            <Icon name="ri:tiktok-fill" size="22" class="text-gray-700" />
+          </a>
+        </div>
+
 		<Navigation showTopBar />
 		<div class="mb-32">
           <slot />

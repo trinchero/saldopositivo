@@ -46,7 +46,9 @@ export default defineConfig({
 			applyBaseStyles: false,
 		}),
 		sitemap(),
-		icon(),
+		icon({
+          iconSets: ["mdi", "ri", "fa6-brands", "simple-icons"],
+        }),
 		react(),
 		markdoc(),
 		keystatic(),
