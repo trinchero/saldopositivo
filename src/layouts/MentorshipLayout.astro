@@ -11,17 +11,17 @@ type Props = {
 };
 
 const frontmatter = Astro.props;
-
 ---
 
 <BaseLayout>
   <section class="py-32 md:py-56">
     <Container>
-    <div class="mb-6">
-      <a href="/services-detail/mentorship-detail" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-black transition">
-        Volver a servicios
-      </a>
-    </div>
+      <div class="mb-6">
+        <a href="/services-detail/mentorship-detail" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-black transition">
+          Volver a servicios
+        </a>
+      </div>
+
       <div class="text-center">
         <Title level={1}>{frontmatter.title}</Title>
         {frontmatter.description && (
@@ -46,7 +46,61 @@ const frontmatter = Astro.props;
           <slot />
         </Prose>
       </div>
+    </Container>
+    <!-- Bottone "Comprar Mentoría" -->
+      <div class="text-center mt-20">
+        <button
+          onclick="document.getElementById('checkout-section')?.classList.remove('hidden'); document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth' });"
+          class="bg-black text-white text-lg px-6 py-3 rounded-full hover:bg-gray-800 transition"
+        >
+          Comprar Mentoría
+        </button>
+      </div>
+  </section>
 
+
+
+  <!-- Checkout Section (inizialmente nascosta) -->
+  <section id="checkout-section" class="hidden py-20 bg-gray-100 mt-10">
+    <Container>
+      <div class="max-w-xl mx-auto bg-white p-8 rounded-2xl shadow-lg text-center relative">
+
+        <!-- Bottone per chiudere -->
+        <button
+          onclick="document.getElementById('checkout-section')?.classList.add('hidden');"
+          class="absolute top-4 right-4 text-gray-400 hover:text-black text-xl font-bold"
+          aria-label="Cerrar checkout"
+        >
+          &times;
+        </button>
+
+        <h2 class="text-2xl font-bold mb-6">Completa tu compra</h2>
+
+        <p class="text-gray-600 mb-4">Precio: <strong>USD 59.00</strong></p>
+
+        <form onsubmit="return false;">
+          <input
+            type="text"
+            placeholder="Nombre completo"
+            class="w-full mb-4 p-3 border rounded"
+          />
+          <input
+            type="email"
+            placeholder="Correo electrónico"
+            class="w-full mb-4 p-3 border rounded"
+          />
+
+          <div class="space-y-4 mt-6">
+            <button type="button" class="w-full bg-yellow-500 text-black font-semibold py-3 rounded hover:bg-yellow-600 transition">
+              Pagar con PayPal
+            </button>
+            <button type="button" class="w-full bg-gray-900 text-white font-semibold py-3 rounded hover:bg-gray-800 transition">
+              Pagar con tarjeta
+            </button>
+          </div>
+        </form>
+      </div>
     </Container>
   </section>
+
 </BaseLayout>
