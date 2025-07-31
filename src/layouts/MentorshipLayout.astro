@@ -3,7 +3,6 @@ import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import Container from "@/components/primitives/Container.astro";
 import Prose from "@/components/primitives/Prose.astro";
-import Share from "@/components/primitives/Share.astro";
 import Title from "@/components/primitives/Title.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
@@ -48,9 +47,6 @@ const frontmatter = Astro.props;
         </Prose>
       </div>
 
-      <div class="mx-auto w-full max-w-3xl pt-20">
-        <Share />
-      </div>
     </Container>
   </section>
 </BaseLayout>
