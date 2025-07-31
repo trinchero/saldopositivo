@@ -86,7 +86,6 @@ export default defineMarkdocConfig({
 			},
 			render: component("./src/components/sections/Services.astro"),
 		},
-
         ServiceIntro: {
           attributes: {
             title: { type: String, required: true },
@@ -94,6 +93,8 @@ export default defineMarkdocConfig({
             description: { type: String, required: true },
             buttonTitle: { type: String, required: true },
             buttonHref: { type: String, required: true },
+            hideDescription: { type: Boolean },
+            note: { type: String }, // 👈 AGGIUNTO QUI
           },
           render: component("./src/components/sections/ServiceIntro.astro"),
         },
