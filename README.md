@@ -1,53 +1,38 @@
-# [Mizar](https://mizar.majestico.co)
+# [Saldopositivo](https://saldopositivo.vercel.app)
 
-<a href="https://astro.build/">![Astro](.github/images/astro-icon.png)</a>
-<a href="https://tailwindcss.com/">![Tailwind](.github/images/tailwind-icon.png)</a>
-<a href="https://alpinejs.dev/">![Alpine js](.github/images/alpine-icon.png)</a>
+<a href="https://astro.build/"><img src=".github/images/astro-icon.png" alt="Astro" height="32"/></a>
+<a href="https://tailwindcss.com/"><img src=".github/images/tailwind-icon.png" alt="Tailwind" height="32"/></a>
+<a href="https://alpinejs.dev/"><img src=".github/images/alpine-icon.png" alt="Alpine JS" height="32"/></a>
 
-Mizar is a template made with [Astro](https://astro.build), [Tailwind](https://tailwindcss.com/) and [AlpineJS](https://alpinejs.dev/).
+**Saldopositivo** es un proyecto construido con [Astro](https://astro.build), [Tailwind CSS](https://tailwindcss.com/) y [AlpineJS](https://alpinejs.dev/).  
+Está enfocado en brindar acompañamiento humano y consciente a través de mentorías personalizadas para procesos como la migración, la toma de decisiones o el equilibrio personal y profesional.
 
-This project was strongly inspired by a template found on Webflow which I can longer find, if you are the author please let me know so I can give you the credits.
-
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/majesticooss/mizar)
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/majesticooss/mizar)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/majesticooss/mizar)
-
-
-### [🧪 Site preview →](https://mizar.majestico.co)
-
-### [🧑‍🚀 Astro website →](https://astro.build/)
-
-### [🕮 Astro docs →](https://docs.astro.build/en/getting-started/)
+👉 **Sitio web**: [https://saldopositivo.vercel.app](https://saldopositivo.vercel.app)
 
 ---
 
-## Preview
+## 🛠️ Tecnologías utilizadas
 
-![Astros Preview](.github/images/screenshot.png)
-
-## 🧪 Test
-
-On the folder run
-
-1. `bun install`  <small>(or `yarn` or `pnpm i`)</small>
-2. `bun run dev`  <small>(or `yarn dev` or `pnpm dev`)</small>
-
-## ✅ Features
-
-- [x] Localization
-- [x] Blog
-- [x] CMS for editing blog post (thanks to Keystatic)
-- [x] PWA (thanks to vite-pwa)
-
-## ✍️ Admin dashboard
-
-You can access the admin dashboard for editing blog post at `/keystatic` 
-
-For more information follow Keystatic documentation at [https://keystatic.com/docs/introduction](https://keystatic.com/docs/introduction)
-
+- Astro
+- Tailwind CSS
+- AlpineJS
+- Markdoc (para contenido dinámico)
+- Keystatic (CMS de contenido)
+- PWA (mediante `vite-pwa`)
+- Despliegue en [Vercel](https://vercel.com)
 
 ---
 
-<p align="right"><a href="https://majestico.co" target="_blank">majestico.co</p>
+## 👩‍💼 Información del proyecto
+
+- **Autora y facilitadora**: Julieta Paez
+- **Desarrollo web**: Andrea Trinchero
+- **Versión en línea**: [https://saldopositivo.vercel.app](https://saldopositivo.vercel.app)
+
+---
+
+## 🧪 Desarrollo local
+
+```bash
+pnpm install     # o npm install / yarn install
+pnpm dev         # inicia el servidor de desarrollo

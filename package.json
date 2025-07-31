@@ -1,14 +1,14 @@
 {
-	"name": "@majesticooss/mizar",
+	"name": "saldo-positivo",
 	"type": "module",
 	"version": "0.0.1",
 	"private": true,
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/majesticooss/mizar.git"
+		"url": "https://github.com/trinchero/saldopositivo"
 	},
-	"bugs": "https://github.com/majesticooss/mizar/issues",
-	"homepage": "https://github.com/majesticooss/mizar",
+	"bugs": "",
+	"homepage": "https://saldopositivo.vercel.app",
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
