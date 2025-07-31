@@ -30,6 +30,10 @@ export async function getStaticPaths() {
 const { data } = Astro.props;
 const { Content } = await data.render();
 const isFreeResource = data.slug.endsWith("freeresource-detail");
+console.log("🔍 SLUG:", data.slug);
+console.log("📄 DATA keys:", Object.keys(data.data));
+console.log("📎 RESOURCES:", data.data.resources);
+
 ---
 
 {isFreeResource ? (
