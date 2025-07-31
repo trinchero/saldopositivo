@@ -28,37 +28,27 @@ const resources = frontmatter.resources ?? [];
       </div>
 
       <div class="text-center">
-        <Title level={1}>{frontmatter.title}</Title>
+        <h1 class="text-3xl md:text-4xl font-bold">{frontmatter.title}</h1>
         {frontmatter.description && (
-          <p class="mx-auto max-w-2xl pt-8 text-base text-slate-500">
+          <p class="mx-auto max-w-2xl pt-6 text-base text-slate-500">
             <em>{frontmatter.description}</em>
           </p>
         )}
       </div>
 
-      {frontmatter.cover && (
-        <div class="flex justify-center pt-12">
-          <Image
-            src={frontmatter.cover}
-            alt={`Cover image for ${frontmatter.title}`}
-            class="w-24 h-24 object-contain"
-          />
-        </div>
-      )}
-
       <div class="pt-16 max-w-2xl mx-auto">
         {resources.length > 0 ? (
           <ul class="space-y-6">
             {resources.map((r) => (
-              <li class="border p-4 rounded-lg flex items-center justify-between">
-                <span class="text-lg">{r.title}</span>
+              <li class="border border-gray-200 p-5 rounded-2xl flex items-center justify-between hover:shadow-sm transition">
+                <span class="text-lg font-medium text-gray-800">{r.title}</span>
                 <a
                   href={r.file}
                   download
                   type="application/pdf"
                   class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition"
                 >
-                  Download PDF
+                  Descargar PDF
                 </a>
               </li>
             ))}
