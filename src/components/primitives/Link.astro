@@ -3,8 +3,6 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import { Icon } from "astro-icon/components";
 import { defaultLocale } from "site.config";
 
-const currentLocale = Astro.currentLocale;
-
 export interface Props {
 	href?: string;
 	tag?: "a" | "button";
@@ -27,7 +25,6 @@ const {
 	icon,
 	size = "md",
 	style = "primary",
-	localized = true,
 	class: className,
 	...rest
 } = Astro.props as Props;
@@ -62,10 +59,7 @@ const styles = {
 };
 ---
 
-<Tag
-	href={localized && href?.startsWith("/")
-		? getRelativeLocaleUrl(currentLocale ?? defaultLocale, href)
-		: href}
+<Tag href={href}
 	class:list={[
 		block ? "flex" : "inline-flex",
 		style != "primary" ? sizes[size] : null,
