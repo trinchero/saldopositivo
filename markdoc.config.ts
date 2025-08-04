@@ -100,7 +100,7 @@ export default defineMarkdocConfig({
         },
 		About: {
 			attributes: {
-				title: { type: String, render: "title", required: true },
+				title: { type: String, render: "title", required: false },
 				subtitle: { type: String, render: "subtitle", required: true },
 				content: { type: String, render: "content", required: true },
 			},
